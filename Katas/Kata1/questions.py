@@ -1,7 +1,7 @@
 def sum_of_element(elements):
     """
     1 Kata
-
+#test_comit
     :param elements: list of integers
     :return: Return int - the sum of all elements.
     """
