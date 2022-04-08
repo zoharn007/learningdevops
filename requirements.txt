@@ -1,0 +1,4 @@
+mkdocs
+pandas
+flask
+aiohttp
