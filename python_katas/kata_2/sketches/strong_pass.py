@@ -1,86 +1,43 @@
-import re
+def strong_pass(password):
+    """
+    1 Kata
 
-valid = False
-password = 'trgfdfasxCv3'
-passLen = len(password)
+    A password is considered strong if it satisfies the following criteria:
+    1) Its length is at least 6.
+    2) It contains at least one digit.
+    3) It contains at least one lowercase English character.
+    4) It contains at least one uppercase English character.
+    5) It contains at least one special character. The special characters are: !@#$%^&*()-+
 
-# check password length
-if len(password) >= 8:
-    valid = True
-
-# TODO create regex for password
-passRegex = re.compile(r'''(
-		# check for uppercase
-        	([A-Z]){1,passLen}
-        # check for lowercase 
-        	([a-z]){1,passLen}
-        # check for digit
-        	([0-9]){1,passLen}
-	)''', re.VERBOS
-passRegex.findall(password)
-
-# check the password to see if it meets all criteria. output a response to the user.
-
-
-def testPass(val):
-    if val == True:
-        print('This password rocks!')
+    This function returns True if the given password is strong enough
+    """
+    import re
+    lowercase_flag = False
+    uppercase_flag = False
+    special_char_flag = re.compile('[!@#$%^&*()-+]')
+    if special_char_flag.search(password) is None:
+        special_character_flag = False
     else:
-        print('That password sucks!')
-
-# testPass(valid)
-
+        special_character_flag = True
+    digit_flag = False
+    password = password
+    if len(password) < 6:
+        return False
+    else:
+        for i in range(len(password)):
+            if password[i].islower():
+                lowercase_flag = True
+            if password[i].isupper():
+                uppercase_flag = True
+            if password[i].isdigit():
+                digit_flag = True
+        if lowercase_flag and uppercase_flag and digit_flag and special_character_flag:
+            return True
+        else:
+            return False
 
 
 if __name__ == '__main__':
-    print('\nvalid_parentheses:\n--------------------')
-    print(valid_parentheses('[[{()}](){}]'))
-
-    print('\nfibonacci_fixme:\n--------------------')
-    print(fibonacci_fixme(6))
-
-    print('\nmost_frequent_name:\n--------------------')
-    print(most_frequent_name('names.txt'))
-
-    print('\nfiles_backup:\n--------------------')
-    print(files_backup('python_katas/kata_2'))
-
-    print('\nreplace_in_file:\n--------------------')
-    print(replace_in_file('mnist-predictor.yaml', '{{IMG_NAME}}', 'mnist-pred:0.0.1'))
-
-    print('\njson_configs_merge:\n--------------------')
-    print(json_configs_merge('default.json', 'local.json'))
-
-    print('\nmonotonic_array:\n--------------------')
-    print(monotonic_array([1, 2, 3, 6, 8, 9, 0]))
-
-    print('\nmatrix_avg:\n--------------------')
-    print(matrix_avg([[1, 2, 3], [4, 5, 6], [7, 8, 9]], rows=[0, 2]))
-    print(matrix_avg([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
-
-    print('\nmerge_sorted_lists:\n--------------------')
-    print(merge_sorted_lists([1, 4, 77, 9, 13343], [-7, 0, 7, 23]))
-
-    print('\nlongest_common_substring:\n--------------------')
-    print(longest_common_substring('abcdefg', 'bgtcdesd'))
-
-    print('\nlongest_common_prefix:\n--------------------')
-    print(longest_common_prefix('abcd', 'ttty'))
-
-    print('\nrotate_matrix:\n--------------------')
-    print(rotate_matrix([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]]))
-
-    print('\nis_valid_email:\n--------------------')
-    print(is_valid_email('israel.israeli@gmail.com'))
-
-    print('\npascal_triangle:\n--------------------')
-    print(pascal_triangle(4))
-
-    print('\nlist_flatten:\n--------------------')
-    print(list_flatten([1, 2, [3, 4, [4, 5], 7], 8]))
-
-    print('\nstr_compression:\n--------------------')
-    print(str_compression('aaaabdddddhgf'))
 
     print('\nstrong_pass:\n--------------------')
     print(strong_pass('##$FgC7^^5a'))
