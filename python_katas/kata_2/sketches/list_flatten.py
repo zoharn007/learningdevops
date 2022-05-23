@@ -1,4 +1,3 @@
-
 def list_flatten(test_list):
     """
     2 Kata
@@ -13,6 +12,7 @@ def list_flatten(test_list):
     :param lst: list of integers of another list
     :return: flatten list
     """
+
     if isinstance(test_list, list):
         if len(test_list) == 0:
             return []
@@ -20,12 +20,7 @@ def list_flatten(test_list):
         return list_flatten(first) + list_flatten(rest)
     else:
         return [test_list]
-############################################################
-"""# def flatten(S):
-#    if S == []:
-#        return S
-#    if isinstance(S[0], list):
-#        return flatten(S[0]) + flatten(S[1:])
-#    print(S)
-#    return S[:1] + flatten(S[1:])
-#"""
+
+if __name__ == '__main__':
+    print('\nlist_flatten:\n--------------------')
+    print(list_flatten([1, 2, [3, 4, [4, 5], 7], 8]))

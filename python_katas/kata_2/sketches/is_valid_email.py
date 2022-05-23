@@ -1,97 +1,41 @@
-# Python program to validate an Email
+def is_valid_email(mail_str):
+    """
+    3 Kata
 
-# import re module
+    This function returns True if the given mail is in the form:
+    (username)@(domainname)
 
-# re module provides support
-# for regular expressions
-import re
+    Where
+    * (username) must start with digit or an English character, and can contains only 0-9 a-z A-Z . or _
+    * (domainname) is a real, existed domain - one that resolves to an actual ip address
 
-# Make a regular expression
-# for validating an Email
-regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+    Hint: use socket.gethostbyname() to resolve a DNS in Python code
 
-# Define a function for
-# for validating an Email
+    :param mail_str: mail to check
+    :return: bool: True if it's a valid mail (otherwise either False is returned or the program can crash)
+    """
 
+    # Python program to validate an Email
+    # import re module
+    import re
+    # re module provides support for regular expressions
+    regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+    # Make a regular expression for validating an Email
+    # Define a function for validating an Email
 
-def check(email):
+    def check(email):
 
-	# pass the regular expression
-	# and the string into the fullmatch() method
-	if(re.fullmatch(regex, email)):
-		print("Valid Email")
+        # pass the regular expression
+        # and the string into the full_match() method
 
-	else:
-		print("Invalid Email")
+        if re.fullmatch(regex, email):
+            return ("TRUE")
 
+        else:
+            return ("False")
 
-# Driver Code
-if __name__ == '__main__':
-
-	# Enter the email
-	email = "ankitrai326@gmail.com"
-
-	# calling run function
-	check(email)
-
-	email = "my.ownsite@our-earth.org"
-	check(email)
-
-	email = "ankitrai326.com"
-	check(email)
-
-
-
+    return check(mail_str)
 
 if __name__ == '__main__':
-    print('\nvalid_parentheses:\n--------------------')
-    print(valid_parentheses('[[{()}](){}]'))
-
-    print('\nfibonacci_fixme:\n--------------------')
-    print(fibonacci_fixme(6))
-
-    print('\nmost_frequent_name:\n--------------------')
-    print(most_frequent_name('names.txt'))
-
-    print('\nfiles_backup:\n--------------------')
-    print(files_backup('python_katas/kata_2'))
-
-    print('\nreplace_in_file:\n--------------------')
-    print(replace_in_file('mnist-predictor.yaml', '{{IMG_NAME}}', 'mnist-pred:0.0.1'))
-
-    print('\njson_configs_merge:\n--------------------')
-    print(json_configs_merge('default.json', 'local.json'))
-
-    print('\nmonotonic_array:\n--------------------')
-    print(monotonic_array([1, 2, 3, 6, 8, 9, 0]))
-
-    print('\nmatrix_avg:\n--------------------')
-    print(matrix_avg([[1, 2, 3], [4, 5, 6], [7, 8, 9]], rows=[0, 2]))
-    print(matrix_avg([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
-
-    print('\nmerge_sorted_lists:\n--------------------')
-    print(merge_sorted_lists([1, 4, 77, 9, 13343], [-7, 0, 7, 23]))
-
-    print('\nlongest_common_substring:\n--------------------')
-    print(longest_common_substring('abcdefg', 'bgtcdesd'))
-
-    print('\nlongest_common_prefix:\n--------------------')
-    print(longest_common_prefix('abcd', 'ttty'))
-
-    print('\nrotate_matrix:\n--------------------')
-    print(rotate_matrix([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]]))
-
     print('\nis_valid_email:\n--------------------')
     print(is_valid_email('israel.israeli@gmail.com'))
-
-    print('\npascal_triangle:\n--------------------')
-    print(pascal_triangle(4))
-
-    print('\nlist_flatten:\n--------------------')
-    print(list_flatten([1, 2, [3, 4, [4, 5], 7], 8]))
-
-    print('\nstr_compression:\n--------------------')
-    print(str_compression('aaaabdddddhgf'))
-
-    print('\nstrong_pass:\n--------------------')
-    print(strong_pass('##$FgC7^^5a'))
