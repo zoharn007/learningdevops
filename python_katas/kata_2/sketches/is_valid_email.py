@@ -15,26 +15,32 @@ def is_valid_email(mail_str):
     :return: bool: True if it's a valid mail (otherwise either False is returned or the program can crash)
     """
 
-    # Python program to validate an Email
-    # import re module
-    import re
-    # re module provides support for regular expressions
-    regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
-    # Make a regular expression for validating an Email
-    # Define a function for validating an Email
+import socket
 
-    def check(email):
+x = '1@yneaaaaaat.co.il'
+w = x.split("@", 1)
+first = w[0]
+hostName = w[1]
+flag_1 = True
 
-        # pass the regular expression
-        # and the string into the full_match() method
+for i in first[::]:
+    if flag_1 == False:
+        break
+    if i.isalpha() or i.isnumeric():
+        flag_1 = True
+    else:
+        flag_1 = False
 
-        if re.fullmatch(regex, email):
-            return ("TRUE")
+if flag_1:
+    try:
+        ipAddress = socket.gethostbyname(hostName)
+        print("IP address of the host name {} is: {}".format(hostName, ipAddress))
+    except Exception as e:
+        print(e)
+else:
+    print("False")
 
-        else:
-            return ("False")
 
-    return check(mail_str)
 
 if __name__ == '__main__':
     print('\nis_valid_email:\n--------------------')
